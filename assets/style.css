@@ -1,0 +1,18 @@
+a,
+a:hover {
+	text-decoration: none;
+}
+
+#intro {
+	margin-top: 90px;
+	text-align: center;
+}
+
+/* .container {
+	border: 5px solid;
+	height: 100%;
+} */
+
+h5 {
+	text-align: center;
+}
