@@ -1,18 +1,31 @@
-a,
+a {
+	color: indigo;
+}
 a:hover {
 	text-decoration: none;
+	color: blueviolet;
 }
 
-#intro {
+h3 {
 	margin-top: 90px;
 	text-align: center;
 }
 
-/* .container {
-	border: 5px solid;
-	height: 100%;
-} */
-
-h5 {
+#start-page {
 	text-align: center;
+}
+
+.hidden {
+	display: none;
+}
+
+.btn {
+	background-color: indigo;
+	border: none;
+}
+
+.btn:hover,
+.btn:focus {
+	background-color: blueviolet;
+	border: none;
 }
