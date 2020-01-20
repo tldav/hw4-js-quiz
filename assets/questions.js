@@ -62,9 +62,6 @@ var questions = [
 ];
 
 // Page navigation
-startBtn.addEventListener("click", function() {
-	startPage.className = "hidden";
-});
 
 scoresBtn.addEventListener("click", function() {
 	startPage.className = "hidden";
@@ -75,6 +72,10 @@ restartBtn.addEventListener("click", function() {
 	scoresPage.className = "hidden";
 	startPage.classList.remove("hidden");
 });
+
+// startBtn.addEventListener("click", function() {
+// 	startPage.className = "hidden";
+// });
 
 // answer 1 - questions[0].choices[2] === questions[0].answer
 // answer 2 - questions[1].choices[2] === questions[1].answer

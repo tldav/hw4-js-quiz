@@ -17,146 +17,184 @@
 		<header class="mx-3">
 			<div class="row">
 				<div class="d-flex col-6">
-					<a id="scores-button" href="#"><h4>View High Score</h4></a>
+					<div id="scores-button">
+						<a href="#"><h4>View High Scores</h4></a>
+					</div>
 				</div>
 				<div class="d-flex col-6 justify-content-end">
-					<h4 id="timer">Timer: 50</h4>
+					<div id="timer">
+						<h4>Timer: 50</h4>
+					</div>
 				</div>
 			</div>
 		</header>
 
-		<div class="container" id="start-page">
-			<div class="row">
-				<div class="col-12 d-flex justify-content-center">
-					<h3>Quiz: The Basics of Javascript</h3>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12 d-flex justify-content-center pt-4">
-					<h5>
-						Try to answer the following questions before the time
-						runs out. Correct answers will increase your score.
-						Incorrect answers will decrease your remaining time. The
-						quiz ends if the timer runs out.
-					</h5>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12 d-flex justify-content-center pt-4">
-					<button
-						type="button"
-						id="start-button"
-						class="btn btn-secondary btn-lg"
-					>
-						Start!
-					</button>
-				</div>
-			</div>
-		</div>
-
-		<div class="container hidden" id="question-page">
-			<div class="row">
-				<div class="col-12 d-flex justify-content-center">
-					<h3>Question 1</h3>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12 d-flex justify-content-center pt-4">
-					<h5 id="question">
-						Try to answer the following questions before the time
-						runs out. Correct answers will increase your score.
-						Incorrect answers will decrease your remaining time. The
-						quiz ends if the timer runs out.
-					</h5>
-				</div>
-			</div>
-			<div id="answer-buttons">
+		<div class="container">
+			<div id="start-page">
 				<div class="row">
-					<div class="col-12 d-flex pt-2">
-						<button type="button" class="btn btn-secondary btn-sm">
-							Answer A
-						</button>
+					<div class="col-12 d-flex justify-content-center">
+						<h3>Quiz: The Basics of Javascript</h3>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-12 d-flex pt-2">
-						<button type="button" class="btn btn-secondary btn-sm">
-							Answer B
-						</button>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12 d-flex pt-2">
-						<button type="button" class="btn btn-secondary btn-sm">
-							Answer C
-						</button>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12 d-flex pt-2">
-						<button type="button" class="btn btn-secondary btn-sm">
-							Answer D
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="container hidden" id="submit-page">
-			<div class="row">
-				<div class="col-12 d-flex justify-content-center">
-					<h3>Enter Your Name</h3>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12 d-flex justify-content-center pt-4">
-					<h5 id="final-score">
-						Your final score of 0 will be saved.
-					</h5>
-				</div>
-			</div>
-			<div id="submit-button">
-				<div class="row">
-					<div class="col-12 d-flex pt-4 justify-content-center">
-						<input type="text" placeholder="Your Name" />
-						<input
-							type="submit"
-							value="Submit"
-							class="btn btn-secondary btn-sm"
-						/>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="container hidden" id="scores-page">
-			<div class="row">
-				<div class="col-12 d-flex justify-content-center">
-					<h3>High Scores</h3>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12 d-flex justify-content-center pt-4">
-					<h5 id="high-scores">
-						Displays saved high scores
-					</h5>
-				</div>
-			</div>
-			<div id="restart-button">
 				<div class="row">
 					<div class="col-12 d-flex justify-content-center pt-4">
-						<button type="button" class="btn btn-secondary btn-sm">
-							Go Back
-						</button>
+						<h5>
+							Try to answer the following questions before the
+							time runs out. Correct answers will increase your
+							score. Incorrect answers will decrease your
+							remaining time. The quiz ends if the timer runs out.
+						</h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 d-flex justify-content-center pt-4">
+						<div id="start-button">
+							<button
+								type="button"
+								class="btn btn-secondary btn-lg"
+							>
+								Start!
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div id="clear-scores">
+		</div>
+
+		<div class="container">
+			<div id="question-page" class="hidden">
 				<div class="row">
-					<div class="col-12 d-flex justify-content-center pt-2">
-						<button type="button" class="btn btn-secondary btn-sm">
-							Clear High Scores
-						</button>
+					<div class="col-12 d-flex justify-content-center">
+						<h3>Question 1</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 d-flex justify-content-center pt-4">
+						<div id="question">
+							<h5>
+								Try to answer the following questions before the
+								time runs out. Correct answers will increase
+								your score. Incorrect answers will decrease your
+								remaining time. The quiz ends if the timer runs
+								out.
+							</h5>
+						</div>
+					</div>
+				</div>
+				<div id="answer-buttons">
+					<div class="row">
+						<div class="col-12 d-flex pt-2">
+							<button
+								type="button"
+								class="btn btn-secondary btn-sm"
+							>
+								Answer A
+							</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 d-flex pt-2">
+							<button
+								type="button"
+								class="btn btn-secondary btn-sm"
+							>
+								Answer B
+							</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 d-flex pt-2">
+							<button
+								type="button"
+								class="btn btn-secondary btn-sm"
+							>
+								Answer C
+							</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 d-flex pt-2">
+							<button
+								type="button"
+								class="btn btn-secondary btn-sm"
+							>
+								Answer D
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div id="submit-page" class="hidden">
+				<div class="row">
+					<div class="col-12 d-flex justify-content-center">
+						<h3>Enter Your Name</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 d-flex justify-content-center pt-4">
+						<div id="final-score">
+							<h5>
+								Your final score of 0 will be saved.
+							</h5>
+						</div>
+					</div>
+				</div>
+				<div id="submit-button">
+					<div class="row">
+						<div class="col-12 d-flex pt-4 justify-content-center">
+							<input type="text" placeholder="Your Name" />
+							<input
+								type="submit"
+								value="Submit"
+								class="btn btn-secondary btn-sm"
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div id="scores-page" class="hidden">
+				<div class="row">
+					<div class="col-12 d-flex justify-content-center">
+						<h3>High Scores</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 d-flex justify-content-center pt-4">
+						<div id="high-scores">
+							<h5>
+								Displays saved high scores
+							</h5>
+						</div>
+					</div>
+				</div>
+				<div id="restart-button">
+					<div class="row">
+						<div class="col-12 d-flex justify-content-center pt-4">
+							<button
+								type="button"
+								class="btn btn-secondary btn-sm"
+							>
+								Go Back
+							</button>
+						</div>
+					</div>
+				</div>
+				<div id="clear-scores">
+					<div class="row">
+						<div class="col-12 d-flex justify-content-center pt-2">
+							<button
+								type="button"
+								class="btn btn-secondary btn-sm"
+							>
+								Clear High Scores
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
