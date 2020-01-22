@@ -114,22 +114,38 @@ function questionCycle() {
 }
 
 answerBtn.addEventListener("click", nextQuestion);
-
+console.log(questions[currentQuestion].answer);
 function nextQuestion() {
 	if (currentQuestion < lastQuestion) {
 		currentQuestion++;
 		questionCycle();
+	} else {
+		questionPage.className = "hidden";
+		submitPage.classList.remove("hidden");
 	}
+	answerCheck();
+
+	console.log(questions[currentQuestion].answer);
 }
 
-// answerBtn.addEventListener("click", nextQuestion);
+function answerCheck(userAnswer) {
+	if (userAnswer == questions[currentQuestion].answer) {
+		console.log("Anwer Correct!");
+	} else {
+		console.log("Answer Incorrect!");
+	}
 
-// function nextQuestion() {
-// 	if (currentQuestion < lastQuestion) {
-// 		currentQuestion++;
-// 		startQuiz();
-// 	}
-// }
+	console.log(userAnswer);
+}
+
+submitBtn.addEventListener("click", saveScore);
+
+function saveScore() {
+	submitPage.className = "hidden";
+	scoresPage.classList.remove("hidden");
+	scoresBtn.classList.remove("hidden");
+	currentQuestion = 0;
+}
 
 // answer 1 - questions[0].choices[2] === questions[0].answer
 // answer 2 - questions[1].choices[2] === questions[1].answer
