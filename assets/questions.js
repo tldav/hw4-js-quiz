@@ -5,8 +5,12 @@ var startPage = document.getElementById("start-page");
 var startBtn = document.getElementById("start-button");
 var questionPage = document.getElementById("question-page");
 var questionTitle = document.getElementById("question-title");
-var questionDisplay = document.getElementById("question");
+var questionDisplay = document.getElementById("question-display");
 var answerBtn = document.getElementById("answer-buttons");
+var answerA = document.getElementById("answer-a");
+var answerB = document.getElementById("answer-b");
+var answerC = document.getElementById("answer-c");
+var answerD = document.getElementById("answer-d");
 var submitPage = document.getElementById("submit-page");
 var finalScore = document.getElementById("final-score");
 var submitBtn = document.getElementById("submit-button");
@@ -21,50 +25,53 @@ var questions = [
 		title: "Question 1",
 		question: "Inside which HTML element do we put the JavaScript?",
 		choices: [
-			"A) <javascript>",
-			"B) <scripting>",
-			"C) <script>",
-			"D) <js>"
+			"A) \xa0\xa0\xa0\xa0<javascript>",
+			"B) \xa0\xa0\xa0\xa0<scripting>",
+			"C) \xa0\xa0\xa0\xa0<script>",
+			"D) \xa0\xa0\xa0\xa0<js>"
 		],
-		answer: "C) <script>"
+		answer: "C) \xa0\xa0\xa0\xa0<script>"
 	},
 
 	{
 		title: "Question 2",
 		question: "Where is the correct place to insert the JavaScript",
 		choices: [
-			"A) The <head> section",
-			"B) the <body> section",
-			"C) Both A and B are correct",
-			"D) Neither A nor B are correct"
+			"A) \xa0\xa0\xa0\xa0The <head> section",
+			"B) \xa0\xa0\xa0\xa0The <body> section",
+			"C) \xa0\xa0\xa0\xa0Both A and B are correct",
+			"D) \xa0\xa0\xa0\xa0Neither A nor B are correct"
 		],
-		answer: "C) Both A and B are correct"
+		answer: "C) \xa0\xa0\xa0\xa0Both A and B are correct"
 	},
 
 	{
 		title: "Question 3",
 		question: "How do you create a function in JavaScript?",
 		choices: [
-			"A) function myFunction()",
-			"B) function:myFunction()",
-			"C) function = myFucntion()",
-			"D) do.Funky()"
+			"A) \xa0\xa0\xa0\xa0function myFunction()",
+			"B) \xa0\xa0\xa0\xa0function:myFunction()",
+			"C) \xa0\xa0\xa0\xa0function = myFucntion()",
+			"D) \xa0\xa0\xa0\xa0do.Funky()"
 		],
-		answer: "A) function myFunction()"
+		answer: "A) \xa0\xa0\xa0\xa0function myFunction()"
 	},
 
 	{
 		title: "Question 4",
 		question: "How can you add a comment in JavaScript?",
 		choices: [
-			"A) `This is a comment",
-			"B) <!--This is a comment-->",
-			"C) @This is a comment",
-			"D) //This is a comment"
+			"A) \xa0\xa0\xa0\xa0`This is a comment",
+			"B) \xa0\xa0\xa0\xa0<!--This is a comment-->",
+			"C) \xa0\xa0\xa0\xa0@This is a comment",
+			"D) \xa0\xa0\xa0\xa0//This is a comment"
 		],
-		answer: "D) //This is a comment"
+		answer: "D) \xa0\xa0\xa0\xa0//This is a comment"
 	}
 ];
+
+var lastQuestion = questions.length - 1;
+var currentQuestion = 0;
 
 // High scores and start page navigation
 
@@ -92,12 +99,36 @@ function startQuiz() {
 	scoresBtn.className = "hidden";
 	startPage.className = "hidden";
 	questionPage.classList.remove("hidden");
-	questionTitle.innerHTML = questions[0].title;
-	questionDisplay.innerHTML = questions[0].question;
+	questionCycle();
 }
 
-// function cycleQuestions() {
-//     for(var i = 0; i < questions.length; i++)
+function questionCycle() {
+	var current = questions[currentQuestion];
+
+	questionTitle.firstElementChild.innerHTML = current.title;
+	questionDisplay.firstElementChild.innerHTML = current.question;
+	answerA.firstElementChild.innerText = current.choices[0];
+	answerB.firstElementChild.innerText = current.choices[1];
+	answerC.firstElementChild.innerText = current.choices[2];
+	answerD.firstElementChild.innerText = current.choices[3];
+}
+
+answerBtn.addEventListener("click", nextQuestion);
+
+function nextQuestion() {
+	if (currentQuestion < lastQuestion) {
+		currentQuestion++;
+		questionCycle();
+	}
+}
+
+// answerBtn.addEventListener("click", nextQuestion);
+
+// function nextQuestion() {
+// 	if (currentQuestion < lastQuestion) {
+// 		currentQuestion++;
+// 		startQuiz();
+// 	}
 // }
 
 // answer 1 - questions[0].choices[2] === questions[0].answer
