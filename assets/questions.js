@@ -70,38 +70,60 @@ var questions = [
 	}
 ];
 
+// Global variables
 var lastQuestion = questions.length - 1;
 var currentQuestion = 0;
+var remainingTime = questions.length * 15;
 
-// High scores and start page navigation
+// Page navigation functions - render and remove specified elements
+scoresBtn.addEventListener("click", toScores);
 
-scoresBtn.addEventListener("click", toHighSores);
-
-function toHighSores() {
+function toScores() {
 	startPage.className = "hidden";
-	scoresPage.classList.remove("hidden");
 	scoresBtn.className = "hidden";
+	questionPage.className = "hidden";
+	submitPage.className = "hidden";
+	scoresPage.classList.remove("hidden");
 }
 
 restartBtn.addEventListener("click", toStart);
 
 function toStart() {
 	scoresPage.className = "hidden";
+	submitPage.className = "hidden";
+	questionPage.className = "hidden";
 	startPage.classList.remove("hidden");
 	scoresBtn.classList.remove("hidden");
 }
 
-// Start the quiz
+function toQuestions() {
+	scoresPage.className = "hidden";
+	startPage.className = "hidden";
+	scoresBtn.className = "hidden";
+	submitPage.className = "hidden";
+	questionPage.classList.remove("hidden");
+}
 
+function toSubmit() {
+	scoresPage.className = "hidden";
+	startPage.className = "hidden";
+	questionPage.className = "hidden";
+	scoresBtn.className = "hidden";
+	submitPage.classList.remove("hidden");
+}
+
+// Start button begins quiz and starts countdown. Countdown is 15 seconds * number of questions
 startBtn.addEventListener("click", startQuiz);
 
 function startQuiz() {
-	scoresBtn.className = "hidden";
-	startPage.className = "hidden";
-	questionPage.classList.remove("hidden");
+	remainingTime = questions.length * 15;
+	timer.innerHTML = remainingTime;
+	toQuestions();
 	questionCycle();
+	countdownTimer();
 }
 
+// Renders the specified question in the array
 function questionCycle() {
 	var current = questions[currentQuestion];
 
@@ -113,6 +135,7 @@ function questionCycle() {
 	answerD.firstElementChild.innerText = current.choices[3];
 }
 
+// Increments to the next question when the user selects an answer. No longer increments on last question in the array and goes to score submission screen instead.
 answerBtn.addEventListener("click", nextQuestion);
 
 function nextQuestion() {
@@ -120,30 +143,35 @@ function nextQuestion() {
 		currentQuestion++;
 		questionCycle();
 	} else {
-		questionPage.className = "hidden";
-		submitPage.classList.remove("hidden");
+		toSubmit();
 	}
-	// answerCheck();
 }
 
 function answerCheck(userAnswer) {
 	if (userAnswer === questions[currentQuestion].answer) {
 		console.log("Anwer Correct!");
 	} else {
+		if (remainingTime >= 15) {
+			remainingTime -= 15;
+		} else {
+			remainingTime *= 0;
+		}
+
 		console.log("Answer Incorrect!");
 	}
+}
+
+function countdownTimer() {
+	var countdown = setInterval(function() {
+		remainingTime--;
+		timer.innerHTML = remainingTime;
+		if (remainingTime <= 0) clearInterval(countdown);
+	}, 1000);
 }
 
 submitBtn.addEventListener("click", saveScore);
 
 function saveScore() {
-	submitPage.className = "hidden";
-	scoresPage.classList.remove("hidden");
-	scoresBtn.classList.remove("hidden");
+	toScores();
 	currentQuestion = 0;
 }
-
-// answer 1 - questions[0].choices[2] === questions[0].answer
-// answer 2 - questions[1].choices[2] === questions[1].answer
-// answer 3 - questions[2].choices[0] === questions[2].answer
-// answer 4 - questions[3].choices[3] === questions[3].answer
