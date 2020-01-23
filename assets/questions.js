@@ -15,7 +15,8 @@ var submitPage = document.getElementById("submit-page");
 var finalScore = document.getElementById("final-score");
 var submitBtn = document.getElementById("submit-button");
 var scoresPage = document.getElementById("scores-page");
-var highScores = document.getElementById("high-scores");
+var savedName = document.getElementById("saved-name");
+var savedScore = document.getElementById("saved-score");
 var restartBtn = document.getElementById("restart-button");
 var clearBtn = document.getElementById("clear-scores");
 
