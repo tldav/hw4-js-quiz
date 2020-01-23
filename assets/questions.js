@@ -75,6 +75,7 @@ var questions = [
 var lastQuestion = questions.length - 1;
 var currentQuestion = 0;
 var remainingTime = questions.length * 15;
+var userScore = 0;
 
 // Page navigation functions - render and remove specified elements
 scoresBtn.addEventListener("click", toScores);
@@ -117,8 +118,13 @@ function toSubmit() {
 startBtn.addEventListener("click", startQuiz);
 
 function startQuiz() {
+	// Mutates global variables to original value.
+	currentQuestion = 0;
+	userScore = 0;
 	remainingTime = questions.length * 15;
+	// Resets countdown timer
 	timer.innerHTML = remainingTime;
+
 	toQuestions();
 	questionCycle();
 	countdownTimer();
@@ -148,17 +154,16 @@ function nextQuestion() {
 	}
 }
 
+// Checks to see if answer is correct. Adds 15 points if correct, deducts 15 seconds if incorrect
 function answerCheck(userAnswer) {
 	if (userAnswer === questions[currentQuestion].answer) {
-		console.log("Anwer Correct!");
+		userScore += 15;
 	} else {
 		if (remainingTime >= 15) {
 			remainingTime -= 15;
 		} else {
 			remainingTime *= 0;
 		}
-
-		console.log("Answer Incorrect!");
 	}
 }
 
@@ -173,6 +178,7 @@ function countdownTimer() {
 submitBtn.addEventListener("click", saveScore);
 
 function saveScore() {
+	var nameInput = document.getElementById("name-input").value;
 	toScores();
-	currentQuestion = 0;
+	console.log(nameInput);
 }

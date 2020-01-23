@@ -29,3 +29,13 @@ h3 {
 	background-color: blueviolet;
 	border: none;
 }
+
+#wrong {
+	background-color: red;
+	color: white;
+}
+
+#right {
+	background-color: limegreen;
+	color: white;
+}
