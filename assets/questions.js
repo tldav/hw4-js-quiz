@@ -30,7 +30,7 @@ var questions = [
 			"C) \xa0\xa0\xa0\xa0<script>",
 			"D) \xa0\xa0\xa0\xa0<js>"
 		],
-		answer: "C) \xa0\xa0\xa0\xa0<script>"
+		answer: "answer-c"
 	},
 
 	{
@@ -42,7 +42,7 @@ var questions = [
 			"C) \xa0\xa0\xa0\xa0Both A and B are correct",
 			"D) \xa0\xa0\xa0\xa0Neither A nor B are correct"
 		],
-		answer: "C) \xa0\xa0\xa0\xa0Both A and B are correct"
+		answer: "answer-c"
 	},
 
 	{
@@ -54,7 +54,7 @@ var questions = [
 			"C) \xa0\xa0\xa0\xa0function = myFucntion()",
 			"D) \xa0\xa0\xa0\xa0do.Funky()"
 		],
-		answer: "A) \xa0\xa0\xa0\xa0function myFunction()"
+		answer: "answer-a"
 	},
 
 	{
@@ -66,7 +66,7 @@ var questions = [
 			"C) \xa0\xa0\xa0\xa0@This is a comment",
 			"D) \xa0\xa0\xa0\xa0//This is a comment"
 		],
-		answer: "D) \xa0\xa0\xa0\xa0//This is a comment"
+		answer: "answer-d"
 	}
 ];
 
@@ -114,7 +114,7 @@ function questionCycle() {
 }
 
 answerBtn.addEventListener("click", nextQuestion);
-console.log(questions[currentQuestion].answer);
+
 function nextQuestion() {
 	if (currentQuestion < lastQuestion) {
 		currentQuestion++;
@@ -123,19 +123,15 @@ function nextQuestion() {
 		questionPage.className = "hidden";
 		submitPage.classList.remove("hidden");
 	}
-	answerCheck();
-
-	console.log(questions[currentQuestion].answer);
+	// answerCheck();
 }
 
 function answerCheck(userAnswer) {
-	if (userAnswer == questions[currentQuestion].answer) {
+	if (userAnswer === questions[currentQuestion].answer) {
 		console.log("Anwer Correct!");
 	} else {
 		console.log("Answer Incorrect!");
 	}
-
-	console.log(userAnswer);
 }
 
 submitBtn.addEventListener("click", saveScore);
