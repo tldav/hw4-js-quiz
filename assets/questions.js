@@ -171,6 +171,7 @@ function answerCheck(userAnswer) {
 	}
 }
 
+// Begins the countdown timer for the quiz and stores the remaining time as the user's score.
 function countdownTimer() {
 	countdown = setInterval(function() {
 		remainingTime--;
@@ -181,6 +182,7 @@ function countdownTimer() {
 	}, 1000);
 }
 
+// Displays the user's score and initials (if they choose to enter them) on the high scores screen.
 submitBtn.addEventListener("click", saveScore);
 
 function saveScore() {
