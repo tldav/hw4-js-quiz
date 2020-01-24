@@ -19,6 +19,8 @@ var savedName = document.getElementById("saved-name");
 var savedScore = document.getElementById("saved-score");
 var restartBtn = document.getElementById("restart-button");
 var clearBtn = document.getElementById("clear-scores");
+var right = document.getElementById("right");
+var wrong = document.getElementById("wrong");
 
 // Array of questions as objects to loop through
 var questions = [
@@ -74,8 +76,9 @@ var questions = [
 // Global variables
 var lastQuestion = questions.length - 1;
 var currentQuestion = 0;
-var remainingTime = questions.length * 15;
+var remainingTime = lastQuestion * 15;
 var userScore = 0;
+let countdown;
 
 // Page navigation functions - render and remove specified elements
 scoresBtn.addEventListener("click", toScores);
@@ -112,6 +115,7 @@ function toSubmit() {
 	questionPage.className = "hidden";
 	scoresBtn.className = "hidden";
 	submitPage.classList.remove("hidden");
+	clearInterval(countdown);
 }
 
 // Start button begins quiz and starts countdown. Countdown is 15 seconds * number of questions
@@ -168,10 +172,12 @@ function answerCheck(userAnswer) {
 }
 
 function countdownTimer() {
-	var countdown = setInterval(function() {
+	countdown = setInterval(function() {
 		remainingTime--;
 		timer.innerHTML = remainingTime;
 		if (remainingTime <= 0) clearInterval(countdown);
+		userScore = remainingTime;
+		finalScore.innerHTML = userScore;
 	}, 1000);
 }
 
@@ -180,5 +186,6 @@ submitBtn.addEventListener("click", saveScore);
 function saveScore() {
 	var nameInput = document.getElementById("name-input").value;
 	toScores();
-	console.log(nameInput);
+	savedName.innerHTML = nameInput;
+	savedScore.innerHTML = userScore;
 }
